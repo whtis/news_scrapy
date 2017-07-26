@@ -5,7 +5,7 @@ from sqlalchemy.ext.declarative import declarative_base
 Base = declarative_base()
 
 
-class Article(Base):
+class ArticleModel(Base):
     __tablename__ = 'articles'
 
     aid = Column(Integer, primary_key=True)
@@ -21,7 +21,7 @@ class Article(Base):
     extra3 = Column(String)
 
 
-class ArticleWithTableName(Article):
+class ArticleModelWithTableName(ArticleModel):
     def __init__(self, table_name):
         self.__tablename__ = table_name
         self.aid = Column(Integer, primary_key=True)

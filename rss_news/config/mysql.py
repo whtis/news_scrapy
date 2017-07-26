@@ -25,3 +25,15 @@ engine = create_engine('mysql+pymysql://' +
                        )
 # 创建DBSession类型:
 DBSession = sessionmaker(bind=engine)
+
+
+def createDatabase(self, databaseName):
+    db_sql = [
+        "CREATE DATABASE IF NOT EXISTS " + ('ipom_news_' + databaseName),
+        "create table news_" + databaseName + '.articles' + " like news_template.articles",
+    ]
+    cur = conn.cursor()
+    for sql in db_sql:
+        cur.execute(sql)
+    cur.close()
+    conn.close()

@@ -4,8 +4,9 @@ from scrapy.settings import Settings
 
 from rss_news.config.mysql import DBSession
 from rss_news.model.rule_model import Rule
-from rss_news.spiders.rss_spider import RssSpider
+from rss_news.spiders.web_news_spider import WebSpider
 
+# run webSpider
 settings = Settings()
 settings.set("ITEM_PIPELINES", {
     # 'pipelines.DuplicatesPipeline': 200,
@@ -22,5 +23,5 @@ process = CrawlerProcess(settings)
 db = DBSession()
 rules = db.query(Rule).filter(Rule.enable == 1)
 for rule in rules:
-    process.crawl(RssSpider, rule)
+    process.crawl(WebSpider, rule)
 process.start()

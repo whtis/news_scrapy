@@ -5,8 +5,8 @@ from scrapy.linkextractors import LinkExtractor
 from rss_news.items import ArticleItem
 
 
-class RssSpider(CrawlSpider):
-    name = "rss"
+class WebSpider(CrawlSpider):
+    name = "web"
 
     def __init__(self, rule):
         self.rule = rule
@@ -23,10 +23,10 @@ class RssSpider(CrawlSpider):
             restrict_xpaths=[rule.extract_from]),
             callback='parse_item', follow=True))
         self.rules = tuple(rule_list)
-        super(RssSpider, self).__init__()
+        super(WebSpider, self).__init__()
 
     def parse_item(self, response):
-        self.log('Hi, this is a rss page! %s' % response.url)
+        self.log('Hi, this is a web page! %s' % response.url)
 
         selector = scrapy.Selector(response)
         contents = selector.xpath('//channel/item')
