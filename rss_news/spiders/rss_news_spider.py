@@ -28,6 +28,11 @@ class RssSpider(scrapy.Spider):
             pubDate = content.xpath('pubDate/text()').extract()[0]
 
             article = ArticleItem()
+            article['title'] = title
+            article['category'] = category
+            article['url'] = link
+            article['author'] = author
+            article['publish_time'] = pubDate
             if link is not None:
                 yield scrapy.http.Request(url=link, meta={'item': article}, callback=self.parse_details)
 
@@ -40,4 +45,4 @@ class RssSpider(scrapy.Spider):
             .replace("▍", "")
         content = filter_html_tags(content)
         article['content'] = content
-        print(article)
+        return article
