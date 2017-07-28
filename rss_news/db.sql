@@ -1,13 +1,13 @@
-USE news_test;
+USE news;
 
-CREATE TABLE `articles` (
+CREATE TABLE `article_template` (
   `aid` int(11) NOT NULL AUTO_INCREMENT COMMENT '文章id',
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '文章标题',
   `category` CHAR(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '文章分类',
   `url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '文章url',
   `author` CHAR(100) COLLATE utf8mb4_unicode_ci COMMENT '文章作者',
   `content` text COLLATE utf8mb4_unicode_ci COMMENT '文章内容',
-  `publish_time` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '文章发表时间',
+  `publish_time` TIMESTAMP COMMENT '文章发表时间',
   `source_site` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '来源网站',
   `extra1` varchar(255) COLLATE utf8mb4_unicode_ci,
   `extra2` varchar(255) COLLATE utf8mb4_unicode_ci,

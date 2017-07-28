@@ -17,6 +17,7 @@ class ArticleItem(scrapy.Item):
     content = scrapy.Field()
     publish_time = scrapy.Field()
     source_site = scrapy.Field()
+    table_name = scrapy.Field()
     extra1 = scrapy.Field()
     extra2 = scrapy.Field()
     extra3 = scrapy.Field()
